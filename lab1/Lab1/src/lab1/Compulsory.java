@@ -1,5 +1,6 @@
 package lab1;
 
+//Author: Hirtopanu Tudor-Alin
 public class Compulsory {
 
 	public static void main(String[] args) {
