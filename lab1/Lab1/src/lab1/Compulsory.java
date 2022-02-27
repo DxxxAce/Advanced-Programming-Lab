@@ -1,30 +1,53 @@
+//Author: Hirtopanu Tudor-Alin (2E1)
 package lab1;
 
-//Author: Hirtopanu Tudor-Alin
 public class Compulsory {
 
-	public static void main(String[] args) {
-		System.out.println("Hello World!");
-
-		String[] languages = {"C", "C++", "C#", "Python", "Go", "Rust", "JavaScript", "PHP", "Swift", "Java"};
+	public static void print(String text) {
 		
-		int n = (int) (Math.random() * 1_000_000);	
+		System.out.println(text);
+	}
+	
+	public static int computeResult(int n) {
+		
 		n *= 3;
 		n += Integer.parseInt("10101", 2);
 		n += Integer.parseInt("FF", 16);
 		n *= 6;
 		
-		int result = n, copy;
-		while (result > 9) {
-			copy = result;
-			result = 0;
+		return n;
+	}
+	
+	public static int computeDigitsSum(int n) {
+		
+		int copy;
+		
+		while (n > 9) {
+			
+			copy = n;
+			n = 0;
 			
 			while (copy != 0) {
-				result += copy % 10;
+				
+				n += copy % 10;
 				copy /= 10;
 			}
 		}
 		
-		System.out.println("Willy-nilly, this semester I will learn " + languages[result] + ".");
+		return n;
+	}
+	
+	public static void main(String[] args) {
+		
+		print("Hello World!");
+
+		String[] languages = {"C", "C++", "C#", "Python", "Go", "Rust", "JavaScript", "PHP", "Swift", "Java"};		
+		int n = (int) (Math.random() * 1_000_000);
+
+		int result;
+		result = computeResult(n);
+		result = computeDigitsSum(result);
+		
+		print("Willy-nilly, this semester I will learn " + languages[result] + ".");
 	}
 }
