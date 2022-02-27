@@ -25,6 +25,6 @@ public class Compulsory {
 			}
 		}
 		
-		System.out.println(languages[result]);
+		System.out.println("Willy-nilly, this semester I will learn " + languages[result]);
 	}
 }
