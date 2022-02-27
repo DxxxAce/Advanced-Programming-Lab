@@ -48,7 +48,7 @@ public class Homework {
 		}
 	}
 	
-	public static void linkNeighbors(int size, int length, String[] words, boolean[][] neighbors) {
+	public static void linkNeighbors(int size, int length, char[] alphabet, String[] words, boolean[][] neighbors) {
 		
 		char[] aux = new char[length];
 		int k;
@@ -94,7 +94,7 @@ public class Homework {
 		
 		boolean[][] neighbors = new boolean[n][n];
 		initNeighbors(n, neighbors);
-		linkNeighbors(n, p, words, neighbors);
+		linkNeighbors(n, p, C, words, neighbors);
 		
 	}
 }
