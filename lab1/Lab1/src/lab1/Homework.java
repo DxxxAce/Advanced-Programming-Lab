@@ -1,7 +1,5 @@
 //Author: Hirtopanu Tudor-Alin (2E1)
 package lab1;
-import java.util.Arrays;
-import java.util.Random;
 
 public class Homework {
 	
@@ -10,9 +8,51 @@ public class Homework {
 		System.out.println(text);
 	}	
 	
-	public static void validateArguments(String[] args) {
+	public static boolean isNumeric(String string) {
 		
+		int intValue;
 		
+		try {
+			
+	        intValue = Integer.parseInt(string);
+	        return true;
+	    }
+		catch (NumberFormatException e) {
+			
+	        return false;
+	    }
+	}
+	
+	public static boolean validateArguments(String[] args) {
+		
+		if (args.length < 3) {
+			
+			print("The program needs at least 3 arguments to run.");
+			return false;
+		}
+		
+		if (!isNumeric(args[0])) {
+			
+			print("First argument has to be an integer.");
+			return false;
+		}
+		
+		if (!isNumeric(args[1])) {
+			
+			print("Second argument has to be an integer.");
+			return false;
+		}
+		
+		for (int i = 2; i <  args.length; i++) {
+			
+			if (args[i].length() != 1) {
+				
+				print("All arguments excepting the first two have to be single characters.");
+				return false;
+			}
+		}
+		
+		return true;
 	}
 	
 	public static void generateWords(int size, int length, String[] words, char[] alphabet) {
@@ -36,36 +76,35 @@ public class Homework {
 		
 		for (int i = 0; i < size; i++) {
 			
-			System.out.println(words[i]);
+			print(words[i]);
 		}
 	}
 
-	public static void initNeighbors(int size, boolean[][] neighbors) {
+	public static boolean checkForCommonChar(String s1, String s2) {
 		
-			for (int i = 0; i < size; i++) {
+		for (int i = 0; i < s1.length(); i++) {
 			
-				Arrays.fill(neighbors[i], false);
+			for (int j = 0; j < s2.length(); j++) {
+				
+				if (s1.charAt(i) == s2.charAt(j)) {
+				
+					return true;
+				}
+			}
 		}
+		
+		return false;
 	}
-	
-	public static void linkNeighbors(int size, int length, char[] alphabet, String[] words, boolean[][] neighbors) {
-		
-		char[] aux = new char[length];
-		int k;
-		boolean accept;
-		
+
+	public static void linkNeighbors(int size, String[] words, boolean[][] neighbors) {
+
 		for (int i = 0; i < size; i++) {
 			
 			neighbors[i][i] = true;
-			k = 0;
-			accept = false;
 			
 			for(int j = i + 1; j < size; j++) {
 				
-				while (k < length && !accept) {
-					
-					
-				}
+				neighbors[i][j] = neighbors[j][i] = checkForCommonChar(words[i], words[j]);
 			}
 				
 		}
@@ -73,7 +112,10 @@ public class Homework {
 	
 	public static void main(String[] args) {
 		
-		validateArguments(args);
+		if (!validateArguments(args)) {
+			
+			return;
+		}
 		
 		int n = Integer.parseInt(args[0]);
 		int p = Integer.parseInt(args[1]);
@@ -93,8 +135,8 @@ public class Homework {
 		printWords(n, words);
 		
 		boolean[][] neighbors = new boolean[n][n];
-		initNeighbors(n, neighbors);
-		linkNeighbors(n, p, C, words, neighbors);
+		linkNeighbors(n, words, neighbors);
+		
 		
 	}
 }
