@@ -6,16 +6,19 @@ public class Homework {
 	
 	public static void print(String text) {
 		
+		System.out.print(text);
+	}
+	
+	public static void println(String text) {
+		
 		System.out.println(text);
 	}	
 	
 	public static boolean isNumeric(String string) {
 		
-		int intValue;
-		
 		try {
 			
-	        intValue = Integer.parseInt(string);
+	        Integer.parseInt(string);
 	        return true;
 	    }
 		catch (NumberFormatException e) {
@@ -28,19 +31,19 @@ public class Homework {
 		
 		if (args.length < 3) {
 			
-			print("The program needs at least 3 arguments to run.");
+			println("The program needs at least 3 arguments to run.");
 			return false;
 		}
 		
 		if (!isNumeric(args[0])) {
 			
-			print("First argument has to be an integer.");
+			println("First argument has to be an integer.");
 			return false;
 		}
 		
 		if (!isNumeric(args[1])) {
 			
-			print("Second argument has to be an integer.");
+			println("Second argument has to be an integer.");
 			return false;
 		}
 		
@@ -48,7 +51,7 @@ public class Homework {
 			
 			if (args[i].length() != 1) {
 				
-				print("All arguments excepting the first two have to be single characters.");
+				println("All arguments excepting the first two have to be single characters.");
 				return false;
 			}
 		}
@@ -85,7 +88,7 @@ public class Homework {
 		
 		for (int i = 0; i < size; i++) {
 			
-			print(words[i]);
+			println(words[i]);
 		}
 	}
 
@@ -119,8 +122,35 @@ public class Homework {
 		}
 	}
 	
-	public static void createNeighborsDataStructure(boolean[][] neighbors) {
+	public static void createNeighborsDataStruct(int size, String[] source, boolean[][] link, String[][] dataStruct) {
 		
+		for (int i = 0; i < size; i++) {
+			
+			for (int j = 0; j < size; j++) {
+				
+				if (!link[i][j]) {
+					
+					dataStruct[i][j] = null;
+				}
+				else {
+					
+					dataStruct[i][j] = source[j];
+				}
+			}
+		}
+	}
+	
+	public static void printNeighborsDataStruct(int size, String[][] dataStruct) {
+		
+		for (int i = 0; i < size; i++) {
+			
+			for (int j = 0; j < size; j++) {
+				
+				print(dataStruct[i][j] + " ");
+			}
+			
+			println("");
+		}
 	}
 	
 	public static void main(String[] args) {
@@ -144,6 +174,15 @@ public class Homework {
 		boolean[][] neighbors = new boolean[n][n];
 		linkNeighbors(n, words, neighbors);
 		
+		String[][] neighborsDataStruct = new String[n][n];
 		
+		if (n > 30_000) {
+			
+		}
+		else {
+			
+			createNeighborsDataStruct(n, words, neighbors, neighborsDataStruct);
+			printNeighborsDataStruct(n, neighborsDataStruct);
+		}
 	}
 }

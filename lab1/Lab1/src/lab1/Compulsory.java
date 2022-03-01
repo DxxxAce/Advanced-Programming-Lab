@@ -3,7 +3,7 @@ package lab1;
 
 public class Compulsory {
 
-	public static void print(String text) {
+	public static void println(String text) {
 		
 		System.out.println(text);
 	}
@@ -39,7 +39,7 @@ public class Compulsory {
 	
 	public static void main(String[] args) {
 		
-		print("Hello World!");
+		println("Hello World!");
 
 		String[] languages = {"C", "C++", "C#", "Python", "Go", "Rust", "JavaScript", "PHP", "Swift", "Java"};		
 		int n = (int) (Math.random() * 1_000_000);
@@ -48,6 +48,6 @@ public class Compulsory {
 		result = computeResult(n);
 		result = computeDigitsSum(result);
 		
-		print("Willy-nilly, this semester I will learn " + languages[result] + ".");
+		println("Willy-nilly, this semester I will learn " + languages[result] + ".");
 	}
 }
