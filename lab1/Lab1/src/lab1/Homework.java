@@ -14,6 +14,11 @@ public class Homework {
 		System.out.println(text);
 	}	
 	
+	public static long getCurrentTime() {
+		
+		return System.nanoTime();
+	}
+	
 	public static boolean isNumeric(String string) {
 		
 		try {
@@ -178,6 +183,14 @@ public class Homework {
 		
 		if (n > 30_000) {
 			
+			long startTime, finishTime;
+			
+			startTime = getCurrentTime();
+			createNeighborsDataStruct(n, words, neighbors, neighborsDataStruct);
+			finishTime = getCurrentTime();
+			
+			println("The data structure is too large to be displayed on screen.");
+			println("Construction time: " + (finishTime - startTime) + " nanoseconds.");
 		}
 		else {
 			
