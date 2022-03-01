@@ -3,12 +3,12 @@ package lab1;
 
 public class Compulsory {
 
-	public static void println(String text) {
+	static void println(String text) {
 		
 		System.out.println(text);
 	}
 	
-	public static int computeResult(int n) {
+	static int computeResult(int n) {
 		
 		n *= 3;
 		n += Integer.parseInt("10101", 2);
@@ -18,7 +18,7 @@ public class Compulsory {
 		return n;
 	}
 	
-	public static int computeDigitsSum(int n) {
+	static int computeDigitsSum(int n) {
 		
 		int copy;
 		

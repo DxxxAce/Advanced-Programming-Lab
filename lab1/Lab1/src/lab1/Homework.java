@@ -4,22 +4,22 @@ import java.util.Random;
 
 public class Homework {
 	
-	public static void print(String text) {
+	static void print(String text) {
 		
 		System.out.print(text);
 	}
 	
-	public static void println(String text) {
+	static void println(String text) {
 		
 		System.out.println(text);
 	}	
 	
-	public static long getCurrentTime() {
+	static long getCurrentTime() {
 		
 		return System.nanoTime();
 	}
 	
-	public static boolean isNumeric(String string) {
+	static boolean isNumeric(String string) {
 		
 		try {
 			
@@ -32,7 +32,7 @@ public class Homework {
 	    }
 	}
 	
-	public static boolean validateArguments(String[] args) {
+	static boolean validateArguments(String[] args) {
 		
 		if (args.length < 3) {
 			
@@ -64,7 +64,7 @@ public class Homework {
 		return true;
 	}
 	
-	public static void createAlphabetArray(int size, char[] alphabet, String[] source) {
+	static void createAlphabetArray(int size, char[] alphabet, String[] source) {
 		
 		for (int i = 2; i < source.length; i++) {
 			
@@ -72,7 +72,7 @@ public class Homework {
 		}
 	}
 	
-	public static void generateWords(int size, int length, String[] words, char[] alphabet) {
+	static void generateWords(int size, int length, String[] words, char[] alphabet) {
 		
 		Random rand = new Random();
 		int select;
@@ -89,7 +89,7 @@ public class Homework {
 		}
 	}
 	
-	public static void printWords(int size, String[] words) {
+	static void printWords(int size, String[] words) {
 		
 		for (int i = 0; i < size; i++) {
 			
@@ -97,7 +97,7 @@ public class Homework {
 		}
 	}
 
-	public static boolean checkForCommonChar(String s1, String s2) {
+	static boolean checkForCommonChar(String s1, String s2) {
 		
 		for (int i = 0; i < s1.length(); i++) {
 			
@@ -113,7 +113,7 @@ public class Homework {
 		return false;
 	}
 
-	public static void linkNeighbors(int size, String[] words, boolean[][] neighbors) {
+	static void linkNeighbors(int size, String[] words, boolean[][] neighbors) {
 
 		for (int i = 0; i < size; i++) {
 			
@@ -127,7 +127,7 @@ public class Homework {
 		}
 	}
 	
-	public static void createNeighborsDataStruct(int size, String[] source, boolean[][] link, String[][] dataStruct) {
+	static void createNeighborsDataStruct(int size, String[] source, boolean[][] link, String[][] dataStruct) {
 		
 		for (int i = 0; i < size; i++) {
 			
@@ -145,7 +145,7 @@ public class Homework {
 		}
 	}
 	
-	public static void printNeighborsDataStruct(int size, String[][] dataStruct) {
+	static void printNeighborsDataStruct(int size, String[][] dataStruct) {
 		
 		for (int i = 0; i < size; i++) {
 			
@@ -157,6 +157,38 @@ public class Homework {
 			println("");
 		}
 	}
+	
+	static int maxConsecutiveNeighbors(int size, boolean[] neighbors) {
+		
+		int count = 0, i = 0;
+		boolean link;
+		
+		do {
+			
+			link = neighbors[i++];
+		}
+		while (!link);
+		
+		int currentCount = 1;
+		
+		for (i = 0; i < size; i++) {
+            
+            if (i < size - 1 && neighbors[i+1]) {
+            
+            	currentCount++;
+            }
+            else {
+            	
+                if (currentCount > count) {
+                	
+                    count = currentCount;
+                }
+                
+                currentCount = 1;
+            }
+        }
+        return count;
+    }
 	
 	public static void main(String[] args) {
 		
