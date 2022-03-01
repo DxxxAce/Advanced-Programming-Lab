@@ -3,11 +3,13 @@ package lab1;
 
 public class Compulsory {
 
+	//method for printing text faster (with end of line)
 	static void println(String text) {
 		
 		System.out.println(text);
 	}
 	
+	//apply specified calculations
 	static int computeResult(int n) {
 		
 		n *= 3;
@@ -18,6 +20,7 @@ public class Compulsory {
 		return n;
 	}
 	
+	//compute sum of digits
 	static int computeDigitsSum(int n) {
 		
 		int copy;

@@ -4,21 +4,25 @@ import java.util.Random;
 
 public class Homework {
 	
+	//method for printing text faster
 	static void print(String text) {
 		
 		System.out.print(text);
 	}
 	
+	//method for printing text faster (with end of line)
 	static void println(String text) {
 		
 		System.out.println(text);
 	}	
 	
+	//method that returns the time of its calling
 	static long getCurrentTime() {
 		
 		return System.nanoTime();
 	}
 	
+	//check if a string is numeric
 	static boolean isNumeric(String string) {
 		
 		try {
@@ -32,6 +36,7 @@ public class Homework {
 	    }
 	}
 	
+	//check if the arguments respect the specified constraints
 	static boolean validateArguments(String[] args) {
 		
 		if (args.length < 3) {
@@ -64,6 +69,7 @@ public class Homework {
 		return true;
 	}
 	
+	//store character arguments into char array
 	static void createAlphabetArray(int size, char[] alphabet, String[] source) {
 		
 		for (int i = 2; i < source.length; i++) {
@@ -72,6 +78,7 @@ public class Homework {
 		}
 	}
 	
+	//use the array of characters to randomly generate words
 	static void generateWords(int size, int length, String[] words, char[] alphabet) {
 		
 		Random rand = new Random();
@@ -89,6 +96,7 @@ public class Homework {
 		}
 	}
 	
+	//print each generated word on a separate line
 	static void printWords(int size, String[] words) {
 		
 		for (int i = 0; i < size; i++) {
@@ -97,6 +105,7 @@ public class Homework {
 		}
 	}
 
+	//check if two words have any common character
 	static boolean checkForCommonChar(String s1, String s2) {
 		
 		for (int i = 0; i < s1.length(); i++) {
@@ -113,6 +122,7 @@ public class Homework {
 		return false;
 	}
 
+	//create boolean type array that representing the adjacency relation of the generated words
 	static void linkNeighbors(int size, String[] words, boolean[][] neighbors) {
 
 		for (int i = 0; i < size; i++) {
@@ -127,6 +137,7 @@ public class Homework {
 		}
 	}
 	
+	//create an array type data structure that stores each word's neighbors
 	static void createNeighborsDataStruct(int size, String[] source, boolean[][] link, String[][] dataStruct) {
 		
 		for (int i = 0; i < size; i++) {
@@ -145,6 +156,7 @@ public class Homework {
 		}
 	}
 	
+	//print out the data structure
 	static void printNeighborsDataStruct(int size, String[][] dataStruct) {
 		
 		for (int i = 0; i < size; i++) {
@@ -158,6 +170,7 @@ public class Homework {
 		}
 	}
 	
+	//find the maximum number of consecutive neighbors of a specific word
 	static int maxConsecutiveNeighborsOfWord(int size, boolean[] neighbors) {
 		
 		int count = 0, i = 0;
@@ -187,9 +200,11 @@ public class Homework {
                 currentCount = 1;
             }
         }
+		
         return count;
     }
 	
+	//find the maximum number of consecutive neighbors overall
 	static int maxConsecutiveNeighbors(int size, boolean[][] neighbors) {
 		
 		int count = 0;
@@ -240,7 +255,7 @@ public class Homework {
 			
 			createNeighborsDataStruct(n, words, neighbors, neighborsDataStruct);
 			printNeighborsDataStruct(n, neighborsDataStruct);
-			print("The maximum number of consecutive neighboring words is " + maxConsecutiveNeighbors(n, neighbors) + ".");
+			println("The maximum number of consecutive neighboring words is " + maxConsecutiveNeighbors(n, neighbors) + ".");
 		}
 	}
 }
