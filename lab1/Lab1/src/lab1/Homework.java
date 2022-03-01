@@ -56,6 +56,14 @@ public class Homework {
 		return true;
 	}
 	
+	public static void createAlphabetArray(int size, char[] alphabet, String[] source) {
+		
+		for (int i = 2; i < source.length; i++) {
+			
+			alphabet[i - 2] = source[i].charAt(0);
+		}
+	}
+	
 	public static void generateWords(int size, int length, String[] words, char[] alphabet) {
 		
 		Random rand = new Random();
@@ -111,6 +119,10 @@ public class Homework {
 		}
 	}
 	
+	public static void createNeighborsDataStructure(boolean[][] neighbors) {
+		
+	}
+	
 	public static void main(String[] args) {
 		
 		if (!validateArguments(args)) {
@@ -123,13 +135,7 @@ public class Homework {
 		
 		int m = args.length - 2;
 		char[] C = new char[m];
-		
-		int i, j;
-		
-		for (i = 2; i < args.length; i++) {
-			
-			C[i - 2] = args[i].charAt(0);
-		}
+		createAlphabetArray(m, C, args);
 		
 		String[] words = new String[n];
 		generateWords(n, p, words, C);
