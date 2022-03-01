@@ -1,5 +1,6 @@
 //Author: Hirtopanu Tudor-Alin (2E1)
 package lab1;
+import java.util.Random;
 
 public class Homework {
 	
