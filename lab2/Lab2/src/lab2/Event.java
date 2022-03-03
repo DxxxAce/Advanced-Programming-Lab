@@ -64,12 +64,11 @@ public class Event {
 	@Override
 	public String toString() {
 		
-		 return "Event{" +
-				 "name=" + name +
-				 ", size=" + size +
+		 return name + "(" +
+				 "size=" + size +
 				 ", start=" + startTime +
 				 ", end=" + endTime +
-				 "}";
+				 ")";
 	}
 	
 }
