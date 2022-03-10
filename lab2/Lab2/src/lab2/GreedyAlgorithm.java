@@ -26,6 +26,24 @@ public class GreedyAlgorithm extends Algorithm {
 	@Override
 	public Solution solve(Problem pb) {
 		
+		Solution sol = new Solution();
+		
+		Event[] events = pb.getEvents();
+		Room[] rooms = pb.getRooms();
+		
+		int i, j;
+		
+		for (i = 0; i < events.length; i++) {
+			
+			for (j = 0; j < rooms.length; j++) {
+				
+				if (events[i].getSize() <= rooms[j].getCap()) {
+					
+					sol.assignRoom(i, rooms[j]);
+					break;
+				}
+			}
+		}
 		
 		return null;
 	}

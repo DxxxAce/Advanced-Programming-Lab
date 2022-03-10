@@ -31,7 +31,7 @@ public class Main {
 		Problem pb = new Problem(events, rooms);
 		
 		Algorithm greedy = new GreedyAlgorithm(pb);
-		Solution sol = greedy.solve();
+		Solution sol = greedy.solve(pb);
 		System.out.println(sol);
 		
 		System.out.println(pb);
