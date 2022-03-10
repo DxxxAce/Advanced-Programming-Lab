@@ -1,10 +1,16 @@
 package lab3;
 
-import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
 
 public class Network {
 
-	private List<Node> nodes = new ArrayList<>();
+	private List<Node> nodes;
+	
+	public Network() {
+		
+		this.nodes = new ArrayList<>();
+	}
 	
 	public Network(List<Node> nodes) {
 		
@@ -29,11 +35,6 @@ public class Network {
 	@Override
 	public String toString() {
 		
-		String string = new String();
-		
-		for (int i = 0; i < nodes.size(); i++) {
-			
-			string += nodes.at.toString;
-		}
+		return nodes + "";
 	}
 }

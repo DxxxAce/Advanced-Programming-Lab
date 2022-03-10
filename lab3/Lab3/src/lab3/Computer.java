@@ -13,11 +13,6 @@ public class Computer extends Node implements Identifiable, Storage {
 		this.storageCapacity = storageCapacity;
 	}
 	
-	public void setName(String name) {
-	
-		this.name = name;
-	}
-	
 	public void setAddress(String address) {
 	
 		this.address = address;

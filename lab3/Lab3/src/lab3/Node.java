@@ -1,24 +1,37 @@
 package lab3;
 
-import java.util.*;
+import java.util.Map;
+import java.util.HashMap;
 
-public class Node {
+public class Node implements Comparable<Node> {
 
-	private List<Node> nodes = new ArrayList<>();
+	private String name;
+	private Map<Node, Integer> cost = new HashMap<>();
+
+	public void setName(String name) {
 	
-	public void setNodes(List<Node> nodes) {
-	
-		this.nodes = nodes;
+		this.name = name;
 	}
 	
-	public List<Node> getNodes() {
+	public void setCost(Node node, int value) {
 	
-		return nodes;
+		cost.put(node, value);
 	}
 	
-	public void addNode(Node node) {
-
-		nodes.add(node);
+	public String getName() {
+	
+		return name;
 	}
+	
+	public Map<Node, Integer> getCost() {
+	
+		return cost;
+	}
+	
+	@Override
+	 public int compareTo(Node other) {
+		
+		return this.name.compareTo(other.name);
+	 }
 
 }
