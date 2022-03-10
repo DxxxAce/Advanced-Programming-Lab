@@ -1,17 +1,17 @@
 package lab2;
 
-public class Room {
+public abstract class Room {
 	
-	private String name;
-	private int cap;
-	private RoomType type;
+	protected String name;
+	protected int cap;
+//	private RoomType type;
 	
-	public Room(String name, int cap, RoomType type) {
-		
-		this.name = name;
-		this.cap = cap;
-		this.type = type;
-	}
+//	public Room(String name, int cap, RoomType type) {
+//		
+//		this.name = name;
+//		this.cap = cap;
+//		this.type = type;
+//	}
 	
 	public void setName(String name) {
 		
@@ -23,10 +23,10 @@ public class Room {
 		this.cap = cap;
 	}
 	
-	public void setType(RoomType type) {
-		
-		this.type = type;
-	}
+//	public void setType(RoomType type) {
+//		
+//		this.type = type;
+//	}
 	
 	public String getName() {
 		
@@ -38,28 +38,20 @@ public class Room {
 		return this.cap;
 	}
 	
-	public RoomType getType() {
-		
-		return this.type;
-	}
+//	public RoomType getType() {
+//		
+//		return this.type;
+//	}
 	
 	@Override
 	public boolean equals(Object obj) {
 		
 		if (obj == null || !(obj instanceof Room)) {
+			
 			return false;
 		}
 	 
 		Room other = (Room) obj;
 		return name.equals(other.name);
-	}
-	
-	@Override
-	public String toString() {
-		
-		 return name + "(" +
-				 "cap=" + cap +
-				 ", type=" + type +
-				 ")";
 	}
 }

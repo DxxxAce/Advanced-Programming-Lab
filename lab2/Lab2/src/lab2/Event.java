@@ -62,6 +62,18 @@ public class Event {
 	}
 	
 	@Override
+	public boolean equals(Object obj) {
+		
+		if (obj == null || !(obj instanceof Event)) {
+			
+			return false;
+		}
+		
+		Event other = (Event) obj;
+		return name.equals(other.name);
+	}
+	
+	@Override
 	public String toString() {
 		
 		 return name + "(" +
