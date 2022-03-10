@@ -26,7 +26,7 @@ public class LectureHall extends Room {
 		
 		 return name + "(" +
 				 "cap=" + cap +
-				 ", projector=" + videoProjector +
+				 ", video_projector=" + videoProjector +
 				 ")";
 	}
 }
