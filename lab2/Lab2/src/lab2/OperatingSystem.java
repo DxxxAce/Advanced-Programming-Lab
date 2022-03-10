@@ -1,5 +1,10 @@
 package lab2;
 
+/**
+ * The OperatingSystem enum, defining the types of operating systems used in computer labs.
+ * @author alinh
+ *
+ */
 public enum OperatingSystem {
 	
 	WINDOWS7,
