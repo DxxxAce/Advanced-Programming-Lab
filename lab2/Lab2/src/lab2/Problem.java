@@ -2,7 +2,7 @@ package lab2;
 
 public class Problem {
 	
-	final int DEFAULT_SIZE = 10;
+	final int DEFAULT_SIZE = 2;
 	
 	private Event[] events;
 	private Room[] rooms;

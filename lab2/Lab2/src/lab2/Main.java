@@ -6,6 +6,10 @@ public class Main {
 		
 		Problem pb = new Problem();
 		
+		Algorithm greedy = new GreedyAlgorithm(pb);
+		Solution sol = greedy.solve();
+		System.out.println(sol);
+		
 		System.out.println(pb);
 		
 		Event c1 = new Event();
