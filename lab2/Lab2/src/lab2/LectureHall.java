@@ -4,6 +4,13 @@ public class LectureHall extends Room {
 
 	private boolean videoProjector;
 	
+	public LectureHall(String name, int cap, boolean videoProjector) {
+		
+		this.name = name;
+		this.cap = cap;
+		this.videoProjector = videoProjector;
+	}
+	
 	public void setVideoProjector(boolean videoProjector) {
 		
 		this.videoProjector = videoProjector;
