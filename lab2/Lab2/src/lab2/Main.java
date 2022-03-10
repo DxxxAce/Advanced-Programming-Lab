@@ -1,5 +1,10 @@
 package lab2;
 
+/**
+ * The Main class, where the main function is implemented. 
+ * @author alinh
+ * 
+ */
 public class Main {
 
 	public static void main(String[] args) {
