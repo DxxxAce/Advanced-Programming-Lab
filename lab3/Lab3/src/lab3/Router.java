@@ -2,7 +2,6 @@ package lab3;
 
 public class Router extends Node implements Identifiable {
 
-	private String name;
 	private String address;
 	private String mac;
 	

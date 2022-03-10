@@ -4,12 +4,12 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		Node v1 = new Computer("v1", "127.0.0.1", "8234", "A" , 32);
-        Node v2 = new Router("v2", "127.0.0.2", "8234", "A");
-        Node v3 = new Switch("v3", "127.0.0.3", "8234", "A");
-        Node v4 = new Switch("v4", "127.0.0.4", "6345", "B");
-        Node v5 = new Router("v5", "634.34.43.5", "6345", "B");
-        Node v6 = new Computer("v6", "634.34.43.3", "6345", " B", 84);
+		Node v1 = new Computer("v1", "127.0.0.1", 32);
+        Node v2 = new Router("v2", "127.0.0.2", "00:00:5e:00:53:af");
+        Node v3 = new Switch("v3", "A");
+        Node v4 = new Switch("v4", "B");
+        Node v5 = new Router("v5", "634.34.43.5", "00:00:3e:00:21:sd");
+        Node v6 = new Computer("v6", "634.34.43.3", 84);
         
         Network network= new Network();
         network.addNode(v1);

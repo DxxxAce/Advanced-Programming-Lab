@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 public class Node implements Comparable<Node> {
 
-	private String name;
+	protected String name;
 	private Map<Node, Integer> cost = new HashMap<>();
 
 	public void setName(String name) {
@@ -34,4 +34,10 @@ public class Node implements Comparable<Node> {
 		return this.name.compareTo(other.name);
 	 }
 
+	
+	@Override
+	public String toString() {
+
+		return name;
+	}
 }

@@ -2,7 +2,6 @@ package lab3;
 
 public class Computer extends Node implements Identifiable, Storage {
 
-	private String name;
 	private String address;
 	private int storageCapacity;
 	
@@ -23,10 +22,6 @@ public class Computer extends Node implements Identifiable, Storage {
 		this.storageCapacity = storageCapacity;
 	}
 	
-	public String getName() {
-	
-		return name;
-	}
 	
 	@Override
 	public String getAddress() {
