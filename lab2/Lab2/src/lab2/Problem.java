@@ -56,4 +56,29 @@ public class Problem {
 	
 		return rooms;
 	}
+	
+	/**
+	 * Override of the toString function.
+	 */
+	@Override
+	public String toString() {
+		
+		String string = "Events:\n";
+		
+		int i;
+		
+		for (i = 0; i < events.length; i++) {
+			
+			string += events[i] + "\n";
+		}
+		
+		string += "Rooms:\n";
+		
+		for (i = 0; i < rooms.length; i++) {
+			
+			string += rooms[i] + "\n";
+		}
+		
+		return string;
+	}
 }

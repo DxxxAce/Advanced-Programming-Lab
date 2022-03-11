@@ -7,10 +7,12 @@ package lab2;
  */
 public abstract class Algorithm {
 
+	protected Problem pb;
+	
 	/**
 	 * Abstract function, implemented in child classes. 
 	 * @param pb The instance of the problem.
 	 * @return A solution for the given instance of the problem.
 	 */
-	public abstract Solution solve(Problem pb);
+	public abstract Solution solve();
 }

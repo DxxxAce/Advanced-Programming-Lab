@@ -6,8 +6,6 @@ package lab2;
  *
  */
 public class GreedyAlgorithm extends Algorithm {
-
-	private Problem pb;
 	
 	/**
 	 * The constructor of the GreedyAlgorithm class.
@@ -19,32 +17,52 @@ public class GreedyAlgorithm extends Algorithm {
 	}
 	
 	/**
+	 * The problem setter function.
+	 * @param pb An instance of the problem.
+	 */
+	public void setPb(Problem pb) {
+	
+		this.pb = pb;
+	}
+	
+	/**
+	 * The problem getter function.
+	 * @return An instance of the problem.
+	 */
+	public Problem getPb() {
+	
+		return pb;
+	}
+	
+	/**
 	 * Override of the solve method, inherited from the superclass. Solves the problem for a given instance.
 	 * @param pb The instance of the problem.
 	 * @return A solution for the given instance of the problem.
 	 */
 	@Override
-	public Solution solve(Problem pb) {
+	public Solution solve() {
 		
-		Solution sol = new Solution();
+		Solution sol = new Solution(pb.getEvents());
 		
 		Event[] events = pb.getEvents();
 		Room[] rooms = pb.getRooms();
 		
-		int i, j;
+		int endTime;
 		
-		for (i = 0; i < events.length; i++) {
+		for (int i = 0; i < rooms.length; i++) {
 			
-			for (j = 0; j < rooms.length; j++) {
+			endTime = -1;
+			
+			for (int j = 0; j < events.length; j++) {
 				
-				if (events[i].getSize() <= rooms[j].getCap()) {
+				if (sol.getAssignment()[j] == null && rooms[i].getCap() >= events[j].getSize() && events[j].getStartTime() >= endTime) {
 					
-					sol.assignRoom(i, rooms[j]);
-					break;
+					sol.assignRoom(rooms[i], j);
+					endTime = events[j].getEndTime();
 				}
 			}
 		}
 		
-		return null;
+		return sol;
 	}
 }

@@ -29,11 +29,10 @@ public class Main {
 		Room[] rooms = {r1, r2, r3, r4};
 		
 		Problem pb = new Problem(events, rooms);
+		System.out.println(pb);
 		
 		Algorithm greedy = new GreedyAlgorithm(pb);
-		Solution sol = greedy.solve(pb);
+		Solution sol = greedy.solve();
 		System.out.println(sol);
-		
-		System.out.println(pb);
 	}
 }
