@@ -1,6 +1,6 @@
 package lab3;
 
-public class Switch extends Node {
+public class Switch extends Node implements Identifiable {
 
 	private String location;
 	
@@ -21,7 +21,14 @@ public class Switch extends Node {
 	
 		return location;
 	}
+
+	@Override
+	public String getAddress() {
+		
+		return null;
+	}
 	
+	@Override
 	public boolean isIdentifiable() {
 		
 		return false;

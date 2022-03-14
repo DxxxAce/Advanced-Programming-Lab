@@ -28,8 +28,6 @@ public class Main {
         network.addNode(v4);
         network.addNode(v5);
         network.addNode(v6);
-        
-        
 
         System.out.println(network);
 	}

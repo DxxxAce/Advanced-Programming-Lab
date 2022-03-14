@@ -22,7 +22,6 @@ public class Computer extends Node implements Identifiable, Storage {
 		this.storageCapacity = storageCapacity;
 	}
 	
-	
 	@Override
 	public String getAddress() {
 		
@@ -33,8 +32,9 @@ public class Computer extends Node implements Identifiable, Storage {
 	public int getStorageCapacity() {
 	
 		return storageCapacity;
-	}
+	}	
 	
+	@Override
 	public boolean isIdentifiable() {
 		
 		return true;

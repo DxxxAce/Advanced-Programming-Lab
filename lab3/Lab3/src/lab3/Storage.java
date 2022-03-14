@@ -1,6 +1,8 @@
 package lab3;
 
 public interface Storage {
+	
+	int getStorageCapacity();
 
 	default int switchUnit(StorageUnit storageUnit) {
 		
@@ -30,6 +32,4 @@ public interface Storage {
 		
 		return capacity;
 	}
-	
-	int getStorageCapacity();
 }
