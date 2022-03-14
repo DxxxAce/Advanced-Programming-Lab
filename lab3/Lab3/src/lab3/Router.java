@@ -42,4 +42,9 @@ public class Router extends Node implements Identifiable {
 	
 		return mac;
 	}
+	
+	public boolean isIdentifiable() {
+		
+		return true;
+	}
 }

@@ -21,4 +21,9 @@ public class Switch extends Node {
 	
 		return location;
 	}
+	
+	public boolean isIdentifiable() {
+		
+		return false;
+	}
 }

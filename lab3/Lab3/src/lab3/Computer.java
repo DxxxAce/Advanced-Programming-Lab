@@ -34,4 +34,9 @@ public class Computer extends Node implements Identifiable, Storage {
 	
 		return storageCapacity;
 	}
+	
+	public boolean isIdentifiable() {
+		
+		return true;
+	}
 }

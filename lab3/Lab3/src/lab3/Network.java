@@ -2,6 +2,7 @@ package lab3;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Map;
 
 public class Network {
 
@@ -35,6 +36,21 @@ public class Network {
 	@Override
 	public String toString() {
 		
-		return nodes + "";
+		String string = "";
+		
+		for (Node node : nodes) {
+			
+			Map<Node, Integer> costs = node.getCosts();
+			
+			for (Map.Entry<Node, Integer> cost : costs.entrySet()) {
+				
+				if (node != cost.getKey()) {
+				
+					string += node + "--" + cost.getKey() + '\t' + cost.getValue() + '\n';
+				}
+			}
+		}
+		
+		return string;
 	}
 }

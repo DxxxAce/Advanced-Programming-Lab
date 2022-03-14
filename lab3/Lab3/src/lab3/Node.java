@@ -6,7 +6,12 @@ import java.util.HashMap;
 public class Node implements Comparable<Node> {
 
 	protected String name;
-	private Map<Node, Integer> cost = new HashMap<>();
+	protected Map<Node, Integer> costs = new HashMap<>();
+	
+	public Node() {
+
+		costs.put(this, null);
+	}
 
 	public void setName(String name) {
 	
@@ -14,8 +19,8 @@ public class Node implements Comparable<Node> {
 	}
 	
 	public void setCost(Node node, int value) {
-	
-		cost.put(node, value);
+		
+		costs.put(node, value);
 	}
 	
 	public String getName() {
@@ -23,9 +28,9 @@ public class Node implements Comparable<Node> {
 		return name;
 	}
 	
-	public Map<Node, Integer> getCost() {
+	public Map<Node, Integer> getCosts() {
 	
-		return cost;
+		return costs;
 	}
 	
 	@Override
