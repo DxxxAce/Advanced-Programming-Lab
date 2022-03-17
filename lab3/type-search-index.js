@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","u":"allclasses-index.html"},{"p":"lab3","l":"CompareNodes"},{"p":"lab3","l":"Computer"},{"p":"lab3","l":"Identifiable"},{"p":"lab3","l":"Main"},{"p":"lab3","l":"Network"},{"p":"lab3","l":"Node"},{"p":"lab3","l":"Router"},{"p":"lab3","l":"Storage"},{"p":"lab3","l":"StorageUnit"},{"p":"lab3","l":"Switch"}];updateSearchResults();

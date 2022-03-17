@@ -1,5 +1,10 @@
 package lab3;
 
+/**
+ * The main program.
+ * @author alinh
+ *
+ */
 public class Main {
 
 	public static void main(String[] args) {

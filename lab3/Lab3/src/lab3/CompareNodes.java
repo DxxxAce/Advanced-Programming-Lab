@@ -2,8 +2,19 @@ package lab3;
 
 import java.util.Comparator;
 
+/**
+ * CompareNodes class.
+ * @author alinh
+ *
+ */
 public class CompareNodes implements Comparator<Node> {
 
+	/**
+	 * Override of the compare() function.
+	 * @param obj1 First object to be compared.
+	 * @param obj2 Second object to be compared.
+	 * @return Comparison of the two objects.
+	 */
 	@Override
 	public int compare(Node obj1, Node obj2) {
 		
