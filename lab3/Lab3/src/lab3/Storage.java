@@ -4,9 +4,9 @@ public interface Storage {
 	
 	int getStorageCapacity();
 
-	default int switchUnit(StorageUnit storageUnit) {
+	default long getStorageCapacity(StorageUnit storageUnit) {
 		
-		int capacity = getStorageCapacity();
+		long capacity = getStorageCapacity();
 		
 		switch (storageUnit) {
 		

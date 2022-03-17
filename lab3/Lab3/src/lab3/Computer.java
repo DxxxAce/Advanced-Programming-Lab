@@ -32,11 +32,5 @@ public class Computer extends Node implements Identifiable, Storage {
 	public int getStorageCapacity() {
 	
 		return storageCapacity;
-	}	
-	
-	@Override
-	public boolean isIdentifiable() {
-		
-		return true;
 	}
 }

@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class Network {
+public class Network implements Comparable<Node> {
 
 	private List<Node> nodes;
 	
@@ -33,6 +33,23 @@ public class Network {
 		nodes.add(node);
 	}
 	
+	public List<Node> sortIdentifiableNodes() {
+		
+		List<Node> sortedNodes = new ArrayList<>();
+		
+		for (Node node : nodes) {
+			
+			if (node instanceof Identifiable) {
+				
+				sortedNodes.add(node);
+			}
+		}
+		
+//		sortedNodes.sort(Comparator<Node>);
+		
+		return sortedNodes;
+	}
+	
 	@Override
 	public String toString() {
 		
@@ -52,5 +69,12 @@ public class Network {
 		}
 		
 		return string;
+	}
+
+	@Override
+	public int compareTo(Node other) {
+
+		
+		return 0;
 	}
 }

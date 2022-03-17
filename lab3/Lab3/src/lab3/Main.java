@@ -30,6 +30,6 @@ public class Main {
         network.addNode(v6);
 
         System.out.println(network);
+        System.out.println(network.sortIdentifiableNodes());
 	}
-
 }
