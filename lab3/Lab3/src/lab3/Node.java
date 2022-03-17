@@ -21,7 +21,7 @@ public class Node implements Comparable<Node> {
 	public void setCost(Node node, int value) {
 		
 		costs.put(node, value);
-//		node.costs.put(this, value);
+		node.costs.put(this, value);
 	}
 	
 	public String getName() {

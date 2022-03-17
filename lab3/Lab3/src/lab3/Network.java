@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class Network implements Comparable<Node> {
+public class Network {
 
 	private List<Node> nodes;
 	
@@ -45,7 +45,7 @@ public class Network implements Comparable<Node> {
 			}
 		}
 		
-//		sortedNodes.sort(Comparator<Node>);
+		sortedNodes.sort(new CompareNodes());
 		
 		return sortedNodes;
 	}
@@ -61,7 +61,7 @@ public class Network implements Comparable<Node> {
 			
 			for (Map.Entry<Node, Integer> cost : costs.entrySet()) {
 				
-				if (node != cost.getKey()) {
+				if (node != cost.getKey() && node.getName().compareTo(cost.getKey().getName()) <= 0) {
 				
 					string += node + "--" + cost.getKey() + '\t' + cost.getValue() + '\n';
 				}
@@ -69,12 +69,5 @@ public class Network implements Comparable<Node> {
 		}
 		
 		return string;
-	}
-
-	@Override
-	public int compareTo(Node other) {
-
-		
-		return 0;
 	}
 }
