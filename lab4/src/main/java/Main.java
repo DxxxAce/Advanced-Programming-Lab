@@ -1,10 +1,12 @@
 import java.util.stream.IntStream;
 import com.github.javafaker.Faker;
+import org.jgrapht.Graph;
+import org.jgrapht.alg.spanning.PrimMinimumSpanningTree;
 
 /**
  * Main class.
  * @author alinh
- *
+ * 24/03/2022
  */
 public class Main {
 
@@ -20,16 +22,16 @@ public class Main {
                 .mapToObj(i -> new Intersection(faker.funnyName().name()))
                 .toArray(Intersection[]::new);
 
-        Street s0  = new Street(faker.address().streetName(), 2, nodes[0], nodes[1]);
-        Street s1  = new Street(faker.address().streetName(), 3, nodes[1], nodes[2]);
-        Street s2  = new Street(faker.address().streetName(), 1, nodes[2], nodes[3]);
-        Street s3  = new Street(faker.address().streetName(), 1, nodes[3], nodes[6]);
-        Street s4  = new Street(faker.address().streetName(), 2, nodes[1], nodes[4]);
-        Street s5  = new Street(faker.address().streetName(), 1, nodes[2], nodes[8]);
-        Street s6  = new Street(faker.address().streetName(), 2, nodes[2], nodes[6]);
-        Street s7  = new Street(faker.address().streetName(), 1, nodes[3], nodes[5]);
-        Street s8  = new Street(faker.address().streetName(), 2, nodes[0], nodes[4]);
-        Street s9  = new Street(faker.address().streetName(), 2, nodes[4], nodes[5]);
+        Street s0 = new Street(faker.address().streetName(), 2, nodes[0], nodes[1]);
+        Street s1 = new Street(faker.address().streetName(), 3, nodes[1], nodes[2]);
+        Street s2 = new Street(faker.address().streetName(), 1, nodes[2], nodes[3]);
+        Street s3 = new Street(faker.address().streetName(), 1, nodes[3], nodes[6]);
+        Street s4 = new Street(faker.address().streetName(), 2, nodes[1], nodes[4]);
+        Street s5 = new Street(faker.address().streetName(), 1, nodes[2], nodes[8]);
+        Street s6 = new Street(faker.address().streetName(), 2, nodes[2], nodes[6]);
+        Street s7 = new Street(faker.address().streetName(), 1, nodes[3], nodes[5]);
+        Street s8 = new Street(faker.address().streetName(), 2, nodes[0], nodes[4]);
+        Street s9 = new Street(faker.address().streetName(), 2, nodes[4], nodes[5]);
         Street s10 = new Street(faker.address().streetName(), 1, nodes[5], nodes[6]);
         Street s11 = new Street(faker.address().streetName(), 2, nodes[0], nodes[7]);
         Street s12 = new Street(faker.address().streetName(), 3, nodes[7], nodes[8]);
@@ -42,7 +44,7 @@ public class Main {
         City city = new City("Pascani", nodes, edges);
         city.sortStreets();
 
-        System.out.println(city);
-        city.printStreetsLongerThan(2);
+        PrimMinimumSpanningTree<Intersection, Street> pb = new PrimMinimumSpanningTree<>();
+        System.out.println(pb.getSpanningTree();
     }
 }

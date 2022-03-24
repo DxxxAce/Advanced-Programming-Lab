@@ -1,7 +1,7 @@
 /**
  * Intersection class.
  * @author alinh
- *
+ * 24/03/2022
  */
 public class Intersection {
 

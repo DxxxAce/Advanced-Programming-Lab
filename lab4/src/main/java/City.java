@@ -1,6 +1,10 @@
 import java.util.*;
-import java.util.stream.IntStream;
 
+/**
+ * City class.
+ * @author alinh
+ * 24/03/2022
+ */
 public class City {
 
     private String name;

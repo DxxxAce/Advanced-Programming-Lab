@@ -1,7 +1,9 @@
+import java.util.Objects;
+
 /**
  * Street class.
  * @author alinh
- *
+ * 24/03/2022
  */
 public class Street {
 
@@ -114,6 +116,24 @@ public class Street {
     public Intersection getIntersection2() {
 
         return intersection2;
+    }
+
+    /**
+     * Override of the equals operator.
+     * @param o Object to compare to.
+     * @return Whether the objects have the same length or not.
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Street street = (Street) o;
+        return length == street.length;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(length);
     }
 
     /**
