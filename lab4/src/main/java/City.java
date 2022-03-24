@@ -1,68 +1,131 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.stream.IntStream;
 
 public class City {
 
     private String name;
-    private List<Intersection> intersections = new ArrayList<>();
-    private LinkedList<Street> streets = new LinkedList<>();
-    HashMap<Intersection, List<Street>> cityMap = new HashMap<>();
+    private Set<Intersection> intersections;
+    private LinkedList<Street> streets;
+    private Map<Intersection, List<Street>> cityMap;
 
-    public City(String name) {
+    /**
+     * Class constructor.
+     * @param name City name.
+     * @param intersections City intersections.
+     * @param streets City streets.
+     */
+    public City(String name, Intersection[] intersections, Street[] streets) {
 
         this.name = name;
 
-        Random rand = new Random();
+        this.intersections = new HashSet<>();
+        this.intersections.addAll( Arrays.asList(intersections));
 
-        var nodes = IntStream.rangeClosed(0, 9)
-                .mapToObj(i -> new Intersection("i" + i))
-                .toArray(Intersection[]::new);
+        this.streets = new LinkedList<>();
+        this.streets.addAll( Arrays.asList(streets) );
 
-        var edges = IntStream.rangeClosed(0,  16)
-                .mapToObj(i -> new Street("s" + i, (rand.nextInt(5) + 1)))
-                .toArray(Street[]::new);
+        this.cityMap = new HashMap<>();
 
-        intersections.addAll(Arrays.asList(nodes));
-        streets.addAll(Arrays.asList(edges));
+        for (Intersection intersection : intersections) {
 
-        cityMap.put(nodes[0], Arrays.asList(edges[0], edges[1], edges[2]));
+            List<Street> streetList = new ArrayList();
+
+            for (Street street : streets) {
+
+                if (street.getIntersection1() == intersection || street.getIntersection2() == intersection) {
+
+                    streetList.add(street);
+                }
+            }
+
+            cityMap.put(intersection, streetList);
+        }
     }
 
+    /**
+     * Name setter.
+     * @param name City name.
+     */
     public void setName(String name) {
 
         this.name = name;
     }
 
-    public List<Intersection> getIntersections() {
+    /**
+     * Intersections setter.
+     * @param intersections City intersections.
+     */
+    public void setIntersections(Set<Intersection> intersections) {
 
-        return intersections;
+        this.intersections = intersections;
     }
 
+    /**
+     * Streets setter.
+     * @param streets City streets.
+     */
+    public void setStreets(LinkedList<Street> streets) {
+
+        this.streets = streets;
+    }
+
+    /**
+     * Name getter.
+     * @return City name.
+     */
     public String getName() {
 
         return name;
     }
 
+    /**
+     * Intersections getter.
+     * @return City intersections.
+     */
+    public Set<Intersection> getIntersections() {
+
+        return intersections;
+    }
+
+    /**
+     * Streets getter.
+     * @return City streets.
+     */
     public LinkedList<Street> getStreets() {
 
         return streets;
     }
 
+    /**
+     * Method to sort streets by length.
+     */
     public void sortStreets() {
 
-        streets.sort(Comparator.comparing(Street::getLength));
+        Collections.sort(streets, Comparator.comparing(Street::getLength));
     }
 
-/*    public void printStreetsLongerThan(int length) {
+    /**
+     * Method to print all streets longer than a certain length which join at least 3 other streets.
+     * @param length Length value to compare to.
+     */
+    public void printStreetsLongerThan(int length) {
 
         streets.stream()
-                .filter(v -> cityMap.get(v).contains(e))
+                .filter(v -> v.getLength() > length && cityMap.get(v.getIntersection1()).size() + cityMap.get(v.getIntersection2()).size() > 4)
                 .forEach(System.out::println);
-    }*/
+    }
+
+    /**
+     * Override of the toString() method.
+     * @return City data.
+     */
+    @Override
+    public String toString() {
+        return "City{" +
+                "name='" + name + '\'' +
+                ", intersections=" + intersections +
+                ", streets=" + streets +
+                ", cityMap=" + cityMap +
+                '}';
+    }
 }
