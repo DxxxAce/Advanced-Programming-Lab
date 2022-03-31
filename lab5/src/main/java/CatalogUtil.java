@@ -4,6 +4,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class CatalogUtil {
 
+    public static void add(Catalog catalog, Item item) {
+
+        catalog.add(item);
+    }
+
     public static void save(Catalog catalog, String path)
             throws IOException {
 
@@ -18,10 +23,5 @@ public class CatalogUtil {
         Catalog catalog = objectMapper.readValue(new File(path), Catalog.class);
 
         return catalog;
-    }
-
-    public static void view(Item item) {
-
-
     }
 }

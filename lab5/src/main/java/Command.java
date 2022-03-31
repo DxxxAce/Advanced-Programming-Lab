@@ -1,2 +1,1 @@
-public class Command {
-}
+public abstract class Command {}

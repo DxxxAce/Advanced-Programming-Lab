@@ -18,15 +18,15 @@ public class Main {
         var article = new Item("java17", "The Java Language Specification", "https://docs.oracle.com/javase/specs/jls/se17/html/index.html",
                 "2021", "James Gosling & others", "article");
 
-        catalog.add(book);
-        catalog.add(article);
+        AddCommand.add(catalog, book);
+        AddCommand.add(catalog, article);
 
-        CatalogUtil.save(catalog, "catalog.json");
+       SaveCommand.save(catalog, "catalogs\\catalog.json");
     }
 
     private void testLoadView() throws InvalidCatalogException, IOException {
 
-        Catalog catalog = CatalogUtil.load("catalog.json");
-        CatalogUtil.view(catalog.findById("java17"));
+        Catalog catalog = LoadCommand.load("catalogs\\catalog.json");
+        ViewCommand.view(catalog.findById("java17"), "catalogs\\catalog.json");
     }
 }
