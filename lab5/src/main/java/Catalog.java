@@ -40,6 +40,12 @@ public class Catalog implements Serializable {
         items.add(item);
     }
 
+    public void updateWith(Catalog catalog) {
+
+        this.name = catalog.name;
+        this.items = catalog.items;
+    }
+
     public Item findById(String id) {
 
         return items.stream()

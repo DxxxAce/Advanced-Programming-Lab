@@ -5,7 +5,16 @@ import java.io.IOException;
 
 public class SaveCommand extends Command {
 
-    public static void save(Catalog catalog, String path)
+    Catalog catalog;
+    String path;
+
+    public SaveCommand(Catalog catalog, String path) {
+
+        this.catalog = catalog;
+        this.path = path;
+    }
+
+    public void run()
             throws IOException {
 
         ObjectMapper objectMapper = new ObjectMapper();
