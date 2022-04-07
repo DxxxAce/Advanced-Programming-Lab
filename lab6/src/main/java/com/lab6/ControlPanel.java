@@ -29,7 +29,7 @@ public class ControlPanel extends JPanel {
         saveBtn = new JButton("Save");
         exitBtn = new JButton("Exit");
 
-        //add all buttons TODO
+        //add all buttons
         add(loadBtn);
         add(saveBtn);
         add(exitBtn);
@@ -42,7 +42,17 @@ public class ControlPanel extends JPanel {
 
     private void loadGame(ActionEvent e) {
 
-        //TODO
+        try {
+
+            BufferedImage image = ImageIO.read(new File("game_save.png"));
+
+            frame.canvas.image = image;
+            frame.canvas.repaint();
+        }
+        catch (IOException ex) {
+
+            ex.printStackTrace();
+        }
     }
 
     private void saveGame(ActionEvent e) {

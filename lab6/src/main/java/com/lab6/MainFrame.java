@@ -10,7 +10,7 @@ public class MainFrame extends JFrame {
 
     public MainFrame() {
 
-        super("Positional Game");
+        super("Sticks & Stones");
         init();
     }
 
@@ -23,7 +23,6 @@ public class MainFrame extends JFrame {
         canvas = new DrawingPanel(this);
 
         //arrange the components in the container (frame)
-        //JFrame uses a BorderLayout by default
         add(configPanel, BorderLayout.NORTH);
         add(controlPanel, BorderLayout.SOUTH);
         add(canvas, BorderLayout.CENTER);
