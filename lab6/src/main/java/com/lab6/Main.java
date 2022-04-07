@@ -1,4 +1,4 @@
-package com.example.lab6;
+package com.lab6;
 
 public class Main {
 

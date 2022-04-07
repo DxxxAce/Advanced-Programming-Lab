@@ -1,15 +1,19 @@
-package com.example.lab6;
+package com.lab6;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class ControlPanel extends JPanel {
 
     final MainFrame frame;
 
-    JButton loadBtn = new JButton("Load");
-    JButton saveBtn = new JButton("Save");
-    JButton exitBtn = new JButton("Exit");
+    JButton loadBtn;
+    JButton saveBtn;
+    JButton exitBtn;
 
     public ControlPanel(MainFrame frame) {
 
@@ -21,7 +25,14 @@ public class ControlPanel extends JPanel {
         //change the default layout manager (just for fun)
         setLayout(new GridLayout(1, 4));
 
+        loadBtn = new JButton("Load");
+        saveBtn = new JButton("Save");
+        exitBtn = new JButton("Exit");
+
         //add all buttons TODO
+        add(loadBtn);
+        add(saveBtn);
+        add(exitBtn);
 
         //configure listeners for all buttons
         loadBtn.addActionListener(this::loadGame);
@@ -36,7 +47,19 @@ public class ControlPanel extends JPanel {
 
     private void saveGame(ActionEvent e) {
 
-        //TODO
+        BufferedImage image = new BufferedImage(frame.canvas.getWidth(), frame.canvas.getHeight(), BufferedImage.TYPE_INT_RGB);
+        Graphics2D g = image.createGraphics();
+        frame.canvas.printAll(g);
+        g.dispose();
+
+        try {
+
+            ImageIO.write(image, "png", new File("game_save.png"));
+        }
+        catch (IOException ex) {
+
+            ex.printStackTrace();
+        }
     }
 
     private void exitGame(ActionEvent e) {

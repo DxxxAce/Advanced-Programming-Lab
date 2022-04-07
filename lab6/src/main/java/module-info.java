@@ -4,6 +4,6 @@ module com.example.lab6 {
     requires java.desktop;
 
 
-    opens com.example.lab6 to javafx.fxml;
-    exports com.example.lab6;
+    opens com.lab6 to javafx.fxml;
+    exports com.lab6;
 }
