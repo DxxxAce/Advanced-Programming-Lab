@@ -15,6 +15,8 @@ public class ControlPanel extends JPanel {
     JButton saveBtn;
     JButton exitBtn;
 
+    int saveRows, saveCols;
+
     public ControlPanel(MainFrame frame) {
 
         this.frame = frame;
@@ -46,7 +48,14 @@ public class ControlPanel extends JPanel {
 
             BufferedImage image = ImageIO.read(new File("game_save.png"));
 
+            frame.configPanel.setRows(saveRows);
+            frame.configPanel.setCols(saveCols);
+
+            frame.remove(frame.canvas);
+            frame.canvas = new DrawingPanel(frame);
+            frame.add(frame.canvas);
             frame.canvas.image = image;
+            frame.revalidate();
             frame.canvas.repaint();
         }
         catch (IOException ex) {
@@ -65,6 +74,9 @@ public class ControlPanel extends JPanel {
         try {
 
             ImageIO.write(image, "png", new File("game_save.png"));
+
+            saveRows = frame.configPanel.getRows();
+            saveCols = frame.configPanel.getCols();
         }
         catch (IOException ex) {
 

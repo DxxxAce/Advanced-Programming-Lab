@@ -135,8 +135,10 @@ public class DrawingPanel extends JPanel {
     private void drawStone(int x, int y) {
 
         //Draw a filled oval in the offscreen image TODO
-        offscreen.setColor(Color.LIGHT_GRAY);
+        offscreen.setColor(Color.BLACK);
         offscreen.drawOval(x - stoneSize / 2, y - stoneSize / 2, stoneSize, stoneSize);
+
+        offscreen.setColor(Color.BLUE);
         offscreen.fillOval(x - stoneSize / 2, y - stoneSize / 2, stoneSize, stoneSize);
     }
 

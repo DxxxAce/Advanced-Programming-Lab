@@ -21,9 +21,19 @@ public class ConfigPanel extends JPanel {
         this.rows = (Integer)rowSpinner.getValue();
     }
 
+    public void setRows(int rows) {
+
+        this.rows = rows;
+    }
+
     public void setCols() {
 
         this.cols = (Integer)colSpinner.getValue();;
+    }
+
+    public void setCols(int cols) {
+
+        this.cols = cols;
     }
 
     public int getRows() {
