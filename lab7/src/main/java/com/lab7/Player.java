@@ -2,15 +2,20 @@ package com.lab7;
 
 import java.util.List;
 
+import static java.lang.Thread.sleep;
+
 public class Player implements Runnable {
 
     private String name;
+    private String word;
     private Game game;
     private boolean running;
+    private List<Tile> extracted;
 
     public Player(String name) {
 
         this.name = name;
+        this.word = "";
     }
 
     public void setName(String name) {
@@ -33,27 +38,39 @@ public class Player implements Runnable {
         return name;
     }
 
-    public Game getGame() {
-
-        return game;
-    }
-
     private boolean submitWord() {
-        List<Tile> extracted = game.getBag().extractTiles(7);
+
+        this.extracted = game.getBag().extractTiles(7);
+
         if (extracted.isEmpty()) {
+
             return false;
         }
-        //create a word with all the extracted tiles;
-        String word = new String("");
 
+        for (Tile tile : extracted) {
+
+            word = word.concat(Character.toString(tile.getLetter()));
+        }
+
+        //create a word with all the extracted tiles;
         game.getBoard().addWord(this, word);
+
         //make the player sleep 50ms;
+        try {
+
+            sleep(50);
+        }
+        catch (InterruptedException e) {
+
+            e.printStackTrace();
+        }
+
         return true;
     }
 
     @Override
     public void run() {
 
-        System.out.println(getName() + " playing...");
+        submitWord();
     }
 }

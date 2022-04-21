@@ -1,22 +1,21 @@
 package com.lab7;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class Bag {
 
-    private final Collection<Tile> letters;
+    private final List<Tile> letters = new ArrayList<>();
 
     public Bag() {
 
-        this.letters = new HashSet();
+        for (char c = 'a'; c <= 'z'; c++) {
 
-        Random rand = new Random();
-
-        for (char c = 'a'; c < 'z'; c++) {
-
-            letters.add(new Tile(c, rand.nextInt(10)));
+            letters.add(new Tile(c, (new Random()).nextInt(10)));
         }
     }
+
     public synchronized List<Tile> extractTiles(int howMany) {
 
         List<Tile> extracted = new ArrayList<>();
@@ -28,7 +27,8 @@ public class Bag {
                 break;
             }
 
-            //extracted.add(poll one tile from the collection);
+            int randIndex = (new Random()).nextInt(letters.size());
+            extracted.add(letters.get(randIndex));
         }
 
         return extracted;

@@ -47,7 +47,6 @@ public class Game {
             Thread thread = new Thread();
             thread.start();
 
-            System.out.println("[Thread " + thread.getId() + "]");
             player.run();
         }
     }

@@ -1,15 +1,15 @@
 package com.lab7;
 
-import java.util.Collection;
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Board {
 
-    private final Collection<String> words;
+    private final List<String> words;
 
     public Board() {
 
-        this.words = new HashSet();
+        this.words = new ArrayList<>();
     }
 
     public synchronized void addWord(Player player, String word) {
