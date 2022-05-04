@@ -11,7 +11,10 @@ public class Database {
     private static final String PASSWORD = "c3875d06L!";
     private static Connection connection = null;
 
-    private Database() {}
+    private Database() {
+
+        createConnection();
+    }
 
     public static Connection getConnection() {
 

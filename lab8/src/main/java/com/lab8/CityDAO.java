@@ -2,16 +2,17 @@ package com.lab8;
 
 import java.sql.*;
 
-public class ContinentDAO {
+public class CityDAO {
 
-    public void create(String name) throws SQLException {
+    public void create(String name, int countryId) throws SQLException {
 
         Connection con = Database.getConnection();
 
         try (PreparedStatement pstmt = con.prepareStatement(
-                "insert into continents (name) values (?)")) {
+                "insert into cities (name, country) values (?)")) {
 
             pstmt.setString(1, name);
+            pstmt.setInt(2, countryId);
             pstmt.executeUpdate();
         }
     }
@@ -22,7 +23,7 @@ public class ContinentDAO {
 
         try (Statement stmt = con.createStatement();
              ResultSet rs = stmt.executeQuery(
-                     "select * from continents where name='" + name + "'")) {
+                     "select id from cities where name='" + name + "'")) {
 
             return rs.next() ? rs.getInt(1) : null;
         }
@@ -34,7 +35,7 @@ public class ContinentDAO {
 
         try (Statement stmt = con.createStatement();
              ResultSet rs = stmt.executeQuery(
-                     "select * from continents where id='" + id + "'")) {
+                     "select name from cities where id='" + id + "'")) {
 
             return rs.next() ? rs.getString(1) : null;
         }
