@@ -9,7 +9,7 @@ public class CityDAO {
         Connection con = Database.getConnection();
 
         try (PreparedStatement pstmt = con.prepareStatement(
-                "insert into cities (name, country) values (?)")) {
+                "insert into cities (name, country) values (?, ?)")) {
 
             pstmt.setString(1, name);
             pstmt.setInt(2, countryId);

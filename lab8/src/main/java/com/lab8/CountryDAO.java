@@ -9,7 +9,7 @@ public class CountryDAO {
         Connection con = Database.getConnection();
 
         try (PreparedStatement pstmt = con.prepareStatement(
-                "insert into continents (name, continent) values (?)")) {
+                "insert into countries (name, continent) values (?, ?)")) {
 
             pstmt.setString(1, name);
             pstmt.setInt(2, continentId);
@@ -23,7 +23,7 @@ public class CountryDAO {
 
         try (Statement stmt = con.createStatement();
              ResultSet rs = stmt.executeQuery(
-                     "select * from continents where name='" + name + "'")) {
+                     "select * from countries where name='" + name + "'")) {
 
             return rs.next() ? rs.getInt(1) : null;
         }
@@ -35,7 +35,7 @@ public class CountryDAO {
 
         try (Statement stmt = con.createStatement();
              ResultSet rs = stmt.executeQuery(
-                     "select * from continents where id='" + id + "'")) {
+                     "select * from countries where id='" + id + "'")) {
 
             return rs.next() ? rs.getString(1) : null;
         }
