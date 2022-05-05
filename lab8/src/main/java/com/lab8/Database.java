@@ -37,7 +37,7 @@ public class Database {
         }
         catch (SQLException e) {
 
-            System.err.println(e);
+            e.printStackTrace();
         }
     }
 
@@ -49,7 +49,7 @@ public class Database {
         }
         catch (SQLException e) {
 
-            System.err.println(e);
+            e.printStackTrace();
         }
     }
 }

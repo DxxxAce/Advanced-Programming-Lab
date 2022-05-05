@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class Continent extends Land {
+public abstract class Land {
 
     private int id;
     private String name;

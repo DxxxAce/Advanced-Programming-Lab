@@ -1,8 +1,8 @@
 package com.lab8;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLOutput;
 import java.sql.Statement;
 
 public class Main {
@@ -12,13 +12,18 @@ public class Main {
         try {
 
             var continents = new ContinentDAO();
-            continents.create("Europe");
+            continents.loadContinents();
             Database.getConnection().commit();
+
             var countries = new CountryDAO();
-            int europeId = continents.findByName("Europe");
-            countries.create("Romania", europeId);
-            countries.create("Ukraine", europeId);
+            countries.loadCountries();
             Database.getConnection().commit();
+
+            var cities = new CityDAO();
+            cities.loadCities();
+            Database.getConnection().commit();
+
+            int europeId = continents.findByName("Europe").getId();
 
             Statement stmt = Database.getConnection().createStatement(
                     ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -34,7 +39,14 @@ public class Main {
                 System.out.println(rs.getString("name"));
             }
 
-            Database.getConnection().close();
+            City city1 = cities.findByName("Bucharest");
+            City city2 = cities.findByName("Budapest");
+
+            System.out.println("The distance between Bucharest and Budapest is " +
+                    Distance.getDistance(city1.getLatitude(), city1.getLongitude(),
+                            city2.getLatitude(), city2.getLongitude()) + " kilometres.");
+
+            Database.closeConnection();
         }
         catch (SQLException e1) {
 
