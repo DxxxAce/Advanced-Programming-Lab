@@ -1,10 +1,7 @@
 package com.lab8;
 
-import java.io.IOException;
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 
@@ -14,9 +11,9 @@ public class MainBonus {
 
         Connection con = DataSource.getConnection();
 
-        ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(1);
+        ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(2);
 
-        for (int i = 1; i <= 5; i++) {
+        for (int i = 0; i <= 4; i++) {
 
             CityGenerator generator = new CityGenerator();
             executor.execute(generator);

@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class CityGenerator implements Runnable {
 
-    private Faker faker;
+    private final Faker faker;
 
     public CityGenerator() {
 
@@ -19,6 +19,7 @@ public class CityGenerator implements Runnable {
         FakeCityDAO fakeCities = new FakeCityDAO();
 
         try {
+
             for (int i = 0; i < 200; i++) {
 
                 fakeCities.create(faker.address().cityName());
