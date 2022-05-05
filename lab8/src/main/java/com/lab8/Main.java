@@ -58,6 +58,7 @@ public class Main {
             try {
 
                 Database.getConnection().rollback();
+                Database.closeConnection();
             }
             catch (SQLException e2) {
 
