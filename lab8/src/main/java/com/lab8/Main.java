@@ -1,8 +1,8 @@
 package com.lab8;
 
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.SQLOutput;
 import java.sql.Statement;
 
 public class Main {
@@ -46,6 +46,9 @@ public class Main {
                     Distance.getDistance(city1.getLatitude(), city1.getLongitude(),
                             city2.getLatitude(), city2.getLongitude()) + " kilometres.");
 
+            MainFrame frame = new MainFrame();
+            frame.setVisible(true);
+
             Database.closeConnection();
         }
         catch (SQLException e1) {
@@ -60,6 +63,10 @@ public class Main {
 
                 e2.printStackTrace();
             }
+        }
+        catch (IOException e) {
+
+            e.printStackTrace();
         }
     }
 }
