@@ -1,68 +1,115 @@
 package com.lab9;
 
+import com.lab9.entities.City;
+import com.lab9.entities.Continent;
+import com.lab9.entities.Country;
+import com.lab9.repositories.CityRepository;
+import com.lab9.repositories.ContinentRepository;
+import com.lab9.repositories.CountryRepository;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 public class Main {
 
     public static void main(String[] args) {
 
+        loadContinents();
+        loadCountries();
+        loadCities();
+    }
+
+    public static void testJPA() {
+
+        ContinentRepository continentRepo = new ContinentRepository();
+
+        Continent continent = new Continent();
+        continent.setName("Europe");
+
+        continentRepo.create(continent);
+
+        Continent c = continentRepo.findByName("Europe");
+        c.setName("Africa");
+        continentRepo.persist(c);
+    }
+
+    public static void loadContinents() {
+
+        List<Continent> continents = new ArrayList<>();
+
+        continents.add(new Continent("Africa"));
+        continents.add(new Continent("Antarctica"));
+        continents.add(new Continent("Asia"));
+        continents.add(new Continent("Australia"));
+        continents.add(new Continent("Europe"));
+        continents.add(new Continent("Central America"));
+        continents.add(new Continent("North America"));
+        continents.add(new Continent("South America"));
+
+        ContinentRepository continentRepo = new ContinentRepository();
+
+        for (Continent continent : continents) {
+
+           continentRepo.create(continent);
+        }
+    }
+
+    public static void loadCountries() {
+
+        String line = "";
+        String sep = ",";
+
         try {
 
-            var continents = new ContinentDAO();
-            continents.loadContinents();
-            Database.getConnection().commit();
+            BufferedReader br = new BufferedReader(
+                    new FileReader("src/main/resources/concap.csv"));
 
-            var countries = new CountryDAO();
-            countries.loadCountries();
-            Database.getConnection().commit();
+            CountryRepository countryRepo = new CountryRepository();
 
-            var cities = new CityDAO();
-            cities.loadCities();
-            Database.getConnection().commit();
+            while ((line = br.readLine()) != null) {
 
-            int europeId = continents.findByName("Europe").getId();
+                String[] countryData = line.split(sep);
+                Continent continent = (new ContinentRepository()).findByName(countryData[5]);
+                Country country = new Country(countryData[0].replaceAll("'", " "),
+                        continent.getId(), countryData[4]);
 
-            Statement stmt = Database.getConnection().createStatement(
-                    ResultSet.TYPE_SCROLL_INSENSITIVE,
-                    ResultSet.CONCUR_UPDATABLE);
-            String query = "SELECT name FROM countries WHERE continent = " + europeId + ";";
-
-            ResultSet rs = stmt.executeQuery(query);
-            rs.beforeFirst();
-            System.out.println("Countries in Europe:");
-
-            while(rs.next()) {
-
-                System.out.println(rs.getString("name"));
+                countryRepo.create(country);
+                Set<Country> countries = continent.getCountries();
+                countries.add(country);
+                continent.setCountries(countries);
             }
-
-            City city1 = cities.findByName("Bucharest");
-            City city2 = cities.findByName("Budapest");
-
-            System.out.println("The distance between Bucharest and Budapest is " +
-                    Distance.getDistance(city1.getLatitude(), city1.getLongitude(),
-                            city2.getLatitude(), city2.getLongitude()) + " kilometres.");
-
-            MainFrame frame = new MainFrame();
-            frame.setVisible(true);
-
-            Database.closeConnection();
         }
-        catch (SQLException e1) {
+        catch (IOException e) {
 
-            e1.printStackTrace();
+            e.printStackTrace();
+        }
+    }
 
-            try {
+    public static void loadCities() {
 
-                Database.getConnection().rollback();
-                Database.closeConnection();
-            }
-            catch (SQLException e2) {
+        String line = "";
+        String sep = ",";
 
-                e2.printStackTrace();
+        try {
+
+            BufferedReader br = new BufferedReader(
+                    new FileReader("src/main/resources/concap.csv"));
+
+            CityRepository cityRepo = new CityRepository();
+
+            while ((line = br.readLine()) != null) {
+
+                String[] cityData = line.split(sep);
+                City city = new City(cityData[1].replaceAll("'", " "),
+                        (new CityRepository()).findByName(cityData[0]).getId(), true,
+                        Float.parseFloat(cityData[2]), Float.parseFloat(cityData[3]));
+
+                cityRepo.create(city);
             }
         }
         catch (IOException e) {
@@ -71,3 +118,4 @@ public class Main {
         }
     }
 }
+
