@@ -17,9 +17,17 @@ public class CountryRepository extends DataRepository {
 
     public Country findByName(String name) {
 
-        return (Country) em.createNamedQuery("Country.findByName")
-                .setParameter("name", name)
-                .getSingleResult();
+        try {
+
+            return (Country) em.createNamedQuery("Country.findByName")
+                    .setParameter("name", name)
+                    .getSingleResult();
+        }
+        catch (Exception e) {
+
+            return null;
+        }
+
     }
 
     public List<Country> findByContinent(Continent continent) {

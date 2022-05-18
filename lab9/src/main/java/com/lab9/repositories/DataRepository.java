@@ -1,6 +1,8 @@
 package com.lab9.repositories;
 
 import com.lab9.entities.AbstractEntity;
+import com.lab9.singleton.EntityManagerFactorySingleton;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -15,8 +17,7 @@ public abstract class DataRepository
 
     public DataRepository(Class<T> type) {
 
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("default");
-        this.em = emf.createEntityManager();
+        this.em = EntityManagerFactorySingleton.getEntityManagerFactory().createEntityManager();
 
         this.type = type;
     }

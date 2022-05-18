@@ -17,9 +17,16 @@ public class CityRepository extends DataRepository {
 
     public City findByName(String name) {
 
-        return (City) em.createNamedQuery("City.findByName")
-                .setParameter("name", name)
-                .getSingleResult();
+        try {
+
+            return (City) em.createNamedQuery("City.findByName")
+                    .setParameter("name", name)
+                    .getSingleResult();
+        }
+        catch (Exception e) {
+
+            return null;
+        }
     }
 
     public List<City> findByCountry(Country country) {

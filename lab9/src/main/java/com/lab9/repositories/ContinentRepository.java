@@ -16,8 +16,15 @@ public class ContinentRepository extends DataRepository {
 
     public Continent findByName(String name) {
 
-        return (Continent) em.createNamedQuery("Continent.findByName")
-                .setParameter("name", name)
-                .getSingleResult();
+        try {
+
+            return (Continent) em.createNamedQuery("Continent.findByName")
+                    .setParameter("name", name)
+                    .getSingleResult();
+        }
+        catch (Exception e) {
+
+            return null;
+        }
     }
 }

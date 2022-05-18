@@ -10,10 +10,6 @@ import com.lab9.repositories.CountryRepository;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
 
 public class Main {
 
@@ -40,22 +36,36 @@ public class Main {
 
     public static void loadContinents() {
 
-        List<Continent> continents = new ArrayList<>();
+        String line = "";
+        String sep = ",";
 
-        continents.add(new Continent("Africa"));
-        continents.add(new Continent("Antarctica"));
-        continents.add(new Continent("Asia"));
-        continents.add(new Continent("Australia"));
-        continents.add(new Continent("Europe"));
-        continents.add(new Continent("Central America"));
-        continents.add(new Continent("North America"));
-        continents.add(new Continent("South America"));
+        try {
 
-        ContinentRepository continentRepo = new ContinentRepository();
+            BufferedReader br = new BufferedReader(
+                    new FileReader("src/main/resources/concap.csv"));
 
-        for (Continent continent : continents) {
+            ContinentRepository continentRepo = new ContinentRepository();
 
-           continentRepo.create(continent);
+            while ((line = br.readLine()) != null) {
+
+                long start = System.currentTimeMillis();
+
+                String[] continentData = line.split(sep);
+
+                if (continentRepo.findByName(continentData[5]) == null) {
+
+                    Continent continent = new Continent(continentData[5]);
+
+                    continentRepo.create(continent);
+
+                    long time = System.currentTimeMillis() - start;
+                    System.out.println("Log time for continent " + continent.getName() + ": " + time + " ms.");
+                }
+            }
+        }
+        catch (IOException e) {
+
+            e.printStackTrace();
         }
     }
 
@@ -73,15 +83,27 @@ public class Main {
 
             while ((line = br.readLine()) != null) {
 
-                String[] countryData = line.split(sep);
-                Continent continent = (new ContinentRepository()).findByName(countryData[5]);
-                Country country = new Country(countryData[0].replaceAll("'", " "),
-                        continent.getId(), countryData[4]);
+                long start = System.currentTimeMillis();
 
-                countryRepo.create(country);
-                Set<Country> countries = continent.getCountries();
-                countries.add(country);
-                continent.setCountries(countries);
+                String[] countryData = line.split(sep);
+
+                ContinentRepository continentRepo = new ContinentRepository();
+                Continent continent = continentRepo.findByName(countryData[5]);
+
+                if (countryRepo.findByName(countryData[0]) == null) {
+
+                    Country country = new Country(countryData[0],
+                            continent.getId(), countryData[4]);
+
+                    countryRepo.create(country);
+
+                    continent.getCountries().add(country);
+                    continentRepo.persist(continent);
+
+                    long time = System.currentTimeMillis() - start;
+                    System.out.println("Log time for country " + country.getName() + ": " + time + " ms.");
+                }
+
             }
         }
         catch (IOException e) {
@@ -104,12 +126,27 @@ public class Main {
 
             while ((line = br.readLine()) != null) {
 
-                String[] cityData = line.split(sep);
-                City city = new City(cityData[1].replaceAll("'", " "),
-                        (new CityRepository()).findByName(cityData[0]).getId(), true,
-                        Float.parseFloat(cityData[2]), Float.parseFloat(cityData[3]));
+                long start = System.currentTimeMillis();
 
-                cityRepo.create(city);
+                String[] cityData = line.split(sep);
+
+                CountryRepository countryRepo = new CountryRepository();
+                Country country = countryRepo.findByName(cityData[0]);
+
+                if (cityRepo.findByName(cityData[1]) == null) {
+
+                    City city = new City(cityData[1],
+                            country.getId(), true, Float.parseFloat(cityData[2]),
+                            Float.parseFloat(cityData[3]));
+
+                    cityRepo.create(city);
+
+                    country.getCities().add(city);
+                    countryRepo.persist(country);
+
+                    long time = System.currentTimeMillis() - start;
+                    System.out.println("Log time for city " + city.getName() + ": " + time + " ms.");
+                }
             }
         }
         catch (IOException e) {
