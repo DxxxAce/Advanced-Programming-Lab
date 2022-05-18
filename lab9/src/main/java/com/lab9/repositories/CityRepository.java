@@ -35,4 +35,18 @@ public class CityRepository extends DataRepository {
                 .setParameter("country", country)
                 .getResultList();
     }
+
+    public List<City> findByFirstLetter(char letter) {
+
+        return em.createNamedQuery("City.findByFirstLetter")
+                .setParameter("letter", letter)
+                .getResultList();
+    }
+
+    public City findByPopulation(int population) {
+
+        return (City) em.createNamedQuery("City.findByPopulation")
+                .setParameter("population", population)
+                .getSingleResult();
+    }
 }

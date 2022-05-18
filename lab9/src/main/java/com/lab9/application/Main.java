@@ -1,4 +1,4 @@
-package com.lab9;
+package com.lab9.application;
 
 import com.lab9.entities.City;
 import com.lab9.entities.Continent;
@@ -6,10 +6,12 @@ import com.lab9.entities.Country;
 import com.lab9.repositories.CityRepository;
 import com.lab9.repositories.ContinentRepository;
 import com.lab9.repositories.CountryRepository;
+import com.lab9.solver.ChocoSolver;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Random;
 
 public class Main {
 
@@ -18,6 +20,9 @@ public class Main {
         loadContinents();
         loadCountries();
         loadCities();
+
+        ChocoSolver solver = new ChocoSolver();
+        solver.result(500, 20000000);
     }
 
     public static void testJPA() {
@@ -123,6 +128,7 @@ public class Main {
                     new FileReader("src/main/resources/concap.csv"));
 
             CityRepository cityRepo = new CityRepository();
+            Random rd = new Random();
 
             while ((line = br.readLine()) != null) {
 
@@ -135,9 +141,8 @@ public class Main {
 
                 if (cityRepo.findByName(cityData[1]) == null) {
 
-                    City city = new City(cityData[1],
-                            country.getId(), true, Float.parseFloat(cityData[2]),
-                            Float.parseFloat(cityData[3]));
+                    City city = new City(cityData[1], country.getId(), true, Float.parseFloat(cityData[2]),
+                            Float.parseFloat(cityData[3]), Math.abs(rd.nextInt())%1000000);
 
                     cityRepo.create(city);
 

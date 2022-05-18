@@ -15,6 +15,10 @@ import javax.persistence.*;
                 query = "select distinct e from City e where e.name = :name"),
         @NamedQuery(name = "City.findByCountry",
                 query = "select distinct e from City e where e.country = :country order by e.name"),
+        @NamedQuery(name = "City.findByFirstLetter",
+                query = "select distinct e from City e where substring(e.name, 1, 1) = :letter order by e.name"),
+        @NamedQuery(name = "City.findByPopulation",
+                query = "select distinct e from City e where e.population = :population order by e.name"),
 })
 
 public class City extends AbstractEntity {
@@ -39,13 +43,17 @@ public class City extends AbstractEntity {
     @Column(name = "longitude", nullable = false)
     private Float longitude;
 
-    public City(String name, Integer country, boolean capital, float latitude, float longitude) {
+    @Column(name = "population", nullable = false)
+    private Integer population;
+
+    public City(String name, Integer country, boolean capital, float latitude, float longitude, Integer population) {
 
         this.name = name;
         this.country = (Country) (new CountryRepository()).findById(country);
         this.capital = capital;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.population = population;
     }
 
     public Integer getId() {
@@ -96,4 +104,7 @@ public class City extends AbstractEntity {
         this.longitude = longitude;
     }
 
+    public Integer getPopulation() { return population; }
+
+    public void setPopulation(Integer population) { this.population = population; }
 }
