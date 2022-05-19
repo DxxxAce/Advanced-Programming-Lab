@@ -11,8 +11,9 @@ public class Server {
 
     public static final int PORT = 8100;
     private static ServerSocket serverSocket = null;
+    private static boolean acceptConnections = true;
 
-    Server() throws IOException {
+    public Server() throws IOException {
 
         try {
 
@@ -20,7 +21,7 @@ public class Server {
 
             while (true) {
 
-                if(!serverSocket.isClosed()) {
+                if(acceptConnections) {
 
                     System.out.println("Waiting for a client...");
                     Socket socket = serverSocket.accept();
@@ -43,7 +44,8 @@ public class Server {
         }
     }
     public static void stop() throws IOException {
-        serverSocket.close();
+
+        acceptConnections = false;
     }
 
 

@@ -164,6 +164,7 @@ public class ClientThread extends Thread{
         finally {
 
             try {
+
                 socket.close();
             }
             catch (IOException e) {

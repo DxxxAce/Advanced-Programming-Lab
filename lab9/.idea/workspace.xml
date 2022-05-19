@@ -5,16 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1ddb5a8c-6203-4e8f-83d9-cd794a584726" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../lab10/client/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lab10/client/src/main/java/com/client/Client.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lab10/server/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lab10/server/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lab10/server/src/main/java/com/commands/Command.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lab10/server/src/main/java/com/server/ClientThread.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lab10/server/src/main/java/com/server/Server.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lab10/server/src/main/java/com/social/Network.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lab10/server/src/main/java/com/social/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab9.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6d549394-876c-4705-a06b-1c12b1941b41.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6d549394-876c-4705-a06b-1c12b1941b41.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6d549394-876c-4705-a06b-1c12b1941b41/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6d549394-876c-4705-a06b-1c12b1941b41/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -118,6 +110,7 @@
       <workItem from="1652887126568" duration="4834000" />
       <workItem from="1652955768230" duration="1277000" />
       <workItem from="1652963437747" duration="535000" />
+      <workItem from="1652972424224" duration="1461000" />
     </task>
     <servers />
   </component>
