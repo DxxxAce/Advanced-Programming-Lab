@@ -5,6 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1ddb5a8c-6203-4e8f-83d9-cd794a584726" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../lab10/client/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab10/client/src/main/java/com/client/Client.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab10/server/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab10/server/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab10/server/src/main/java/com/commands/Command.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab10/server/src/main/java/com/server/ClientThread.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab10/server/src/main/java/com/server/Server.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab10/server/src/main/java/com/social/Network.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab10/server/src/main/java/com/social/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab9.zip" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -55,7 +65,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/Lab 9 Homework" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/Lab 10 -Compulsory" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -106,7 +116,8 @@
       <workItem from="1652884150629" duration="385000" />
       <workItem from="1652885341980" duration="923000" />
       <workItem from="1652887126568" duration="4834000" />
-      <workItem from="1652955768230" duration="511000" />
+      <workItem from="1652955768230" duration="1277000" />
+      <workItem from="1652963437747" duration="535000" />
     </task>
     <servers />
   </component>
