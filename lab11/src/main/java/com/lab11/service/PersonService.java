@@ -1,7 +1,7 @@
 package com.lab11.service;
 
 import com.lab11.model.Person;
-import com.lab11.repository.PersonRepo;
+import com.lab11.repository.PersonRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -10,31 +10,32 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class PersonService implements PersonServiceInferface {
+public class PersonService implements Services {
 
-    private final PersonRepo personRepo;
+    private final PersonRepository repo;
 
     @Override
-    public List<Person> getPersons() {
+    public List<Person> get() {
 
-        return personRepo.findAll();
+        return repo.findAll();
     }
 
     @Override
     public void save(Person person) {
 
-        personRepo.save(person);
+        repo.save(person);
     }
 
     @Override
-    public boolean updatePerson(Long id, String name) {
+    public boolean update(Long id, String name) {
 
-        Optional<Person> person = personRepo.findById(id);
+        Optional<Person> person = repo.findById(id);
 
         if (person.isPresent()) {
 
             person.get().setName(name);
-            personRepo.save(person.get());
+            repo.save(person.get());
+
             return true;
         }
 
@@ -42,13 +43,14 @@ public class PersonService implements PersonServiceInferface {
     }
 
     @Override
-    public boolean deletePerson(Long id) {
+    public boolean delete(Long id) {
 
-        Optional<Person> person = personRepo.findById(id);
+        Optional<Person> person = repo.findById(id);
 
         if (person.isPresent()) {
 
-            personRepo.delete(person.get());
+            repo.delete(person.get());
+
             return true;
         }
 

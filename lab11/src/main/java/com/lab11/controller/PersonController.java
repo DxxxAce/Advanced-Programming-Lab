@@ -11,48 +11,48 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/person")
+@RequestMapping("/people")
 public class PersonController {
 
-    private final PersonService personService;
+    private final PersonService service;
 
     @GetMapping("/get")
-    public List<Person> getPersons () {
+    public List<Person> getPeople() {
 
-        return personService.getPersons();
+        return service.get();
     }
 
     @PostMapping("/save")
-    public ResponseEntity<String> savePerson (@RequestBody Person person) {
+    public ResponseEntity<String> savePerson (@RequestBody Person person)
+    {
+        if (person == null) {
 
-        if (person==null) {
-
-            return new ResponseEntity<>("Bad request",HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Bad request.", HttpStatus.BAD_REQUEST);
         }
 
-        personService.save(person);
-        return new ResponseEntity<>("Person created successfully", HttpStatus.CREATED);
+        service.save(person);
+
+        return new ResponseEntity<>("Person created successfully.", HttpStatus.CREATED);
     }
 
     @PutMapping("/update/{id}")
     public ResponseEntity<String> updatePerson(@PathVariable Long id, @RequestParam String name) {
 
-        if (!personService.updatePerson(id,name)) {
+        if (!service.update(id, name)) {
 
-            return new ResponseEntity<>("Person not found", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Person not found.", HttpStatus.NOT_FOUND);
         }
 
-        return new ResponseEntity<>("Person updated successfully", HttpStatus.OK);
+        return new ResponseEntity<>("Person updated successfully.", HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deletePerson(@PathVariable Long id) {
 
-        if (!personService.deletePerson(id)) {
+        if (!service.delete(id)) {
 
-            return new ResponseEntity<>("Person not found", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Person not found.", HttpStatus.NOT_FOUND);
         }
-
-        return new ResponseEntity<>("Person deleted successfully", HttpStatus.OK);
+        return new ResponseEntity<>("Person deleted successfully.", HttpStatus.OK);
     }
 }
