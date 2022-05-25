@@ -11,18 +11,18 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/people")
+@RequestMapping("/person")
 public class PersonController {
 
     private final PersonService service;
 
-    @GetMapping("/get")
+    @GetMapping()
     public List<Person> getPeople() {
 
         return service.get();
     }
 
-    @PostMapping("/save")
+    @PostMapping()
     public ResponseEntity<String> savePerson (@RequestBody Person person)
     {
         if (person == null) {
@@ -35,7 +35,7 @@ public class PersonController {
         return new ResponseEntity<>("Person created successfully.", HttpStatus.CREATED);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<String> updatePerson(@PathVariable Long id, @RequestParam String name) {
 
         if (!service.update(id, name)) {
@@ -46,13 +46,20 @@ public class PersonController {
         return new ResponseEntity<>("Person updated successfully.", HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<String> deletePerson(@PathVariable Long id) {
 
         if (!service.delete(id)) {
 
             return new ResponseEntity<>("Person not found.", HttpStatus.NOT_FOUND);
         }
+
         return new ResponseEntity<>("Person deleted successfully.", HttpStatus.OK);
+    }
+
+    @GetMapping("/top")
+    public ResponseEntity<?> getMostPopularPeople() {
+
+        return ResponseEntity.ok().body(service.top());
     }
 }

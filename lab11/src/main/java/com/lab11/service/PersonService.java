@@ -3,6 +3,7 @@ package com.lab11.service;
 import com.lab11.model.Person;
 import com.lab11.repository.PersonRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,23 +11,21 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class PersonService implements Services {
+@Slf4j
+public class PersonService {
 
     private final PersonRepository repo;
 
-    @Override
     public List<Person> get() {
 
         return repo.findAll();
     }
 
-    @Override
     public void save(Person person) {
 
         repo.save(person);
     }
 
-    @Override
     public boolean update(Long id, String name) {
 
         Optional<Person> person = repo.findById(id);
@@ -42,7 +41,6 @@ public class PersonService implements Services {
         return false;
     }
 
-    @Override
     public boolean delete(Long id) {
 
         Optional<Person> person = repo.findById(id);
@@ -55,5 +53,10 @@ public class PersonService implements Services {
         }
 
         return false;
+    }
+
+    public List<Person> top()
+    {
+        return repo.findTop3ByOrderByTotalFriendsDesc();
     }
 }
